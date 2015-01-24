@@ -19,7 +19,8 @@ public class SpawnerGalileo_A : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (script.caduta)
+            EliminaOstacoli();
 	}
 
     void Spawn()
@@ -66,5 +67,15 @@ public class SpawnerGalileo_A : MonoBehaviour {
         {
             Instantiate(barile, new Vector3(posRoccia, 10, 0), Quaternion.identity);
         }
+    }
+
+    void EliminaOstacoli()
+    {
+        GameObject[] ostacoli = GameObject.FindGameObjectsWithTag("Ostacolo"); 
+        foreach(GameObject ostacolo in ostacoli)
+        {
+            Destroy(ostacolo);
+        }
+
     }
 }
