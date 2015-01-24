@@ -12,6 +12,7 @@ public class SceneNewton : MonoBehaviour {
 	public GameObject mela;
 
 	private float deltaMovimento, tempoMovimento;
+    private DialogueController dialogo;
 
 	int numeroScena;
 
@@ -22,6 +23,7 @@ public class SceneNewton : MonoBehaviour {
 		posizioneIniziale = moglie.transform.position;
 		tempoMovimento = 0;
 		deltaMovimento = 0.01f;
+        dialogo = Camera.main.GetComponent<DialogueController>();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,7 @@ public class SceneNewton : MonoBehaviour {
 				tempoMovimento = 0;
                 Invoke("Delay", 2);
                 //mostro parlato descrizione scena
+                dialogo.resume();
 			}
 			break;
         case 0:
@@ -63,6 +66,7 @@ public class SceneNewton : MonoBehaviour {
 			numeroScena++;
 			Invoke("Delay",0.5f);
                 // mostro parlato oh cazzo
+                dialogo.resume();
 			break;
 		case 6:
 			break;
@@ -86,6 +90,7 @@ public class SceneNewton : MonoBehaviour {
             moglie.GetComponent<GiocatoreNewton>().abilitoSparo(false);
             Invoke("Delay", 1);
                 //mostro il parlato eureka!
+                dialogo.resume();
             break;
 
             case 10:

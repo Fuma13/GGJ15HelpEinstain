@@ -2,22 +2,23 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Scena : MonoBehaviour {
+public class DialogueController : MonoBehaviour
+{
 
     public string[] dialoghi;
     public Color mColor = Color.black;
     public Color fColor = Color.white;
+    public Text textBox;
 
-    private Text textBox;
     private int textTime;
     private bool canWrite = true;
-    private bool paused = false; //False = autostart; True = startare tramite la funzione resume()
+    private bool paused = true; //False = autostart; True = startare tramite la funzione resume()
     private char style;
     private int count = 0;
 
 	// Use this for initialization
 	void Start () {
-        textBox = Canvas.FindObjectOfType<Text>();
+        //textBox = Canvas.FindObjectOfType<Text>();
 	}
 	
 	// Update is called once per frame
