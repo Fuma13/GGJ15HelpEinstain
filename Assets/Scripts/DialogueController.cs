@@ -2,27 +2,30 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Scena : MonoBehaviour {
-
+public class DialogueController : MonoBehaviour
+{
     public string[] dialoghi;
     public Color mColor = Color.black;
     public Color fColor = Color.white;
+    public Text textBox;
+    public GameObject prossimaScenaPrefab;
+    public string prossimaScena;
 
-    private Text textBox;
     private int textTime;
     private bool canWrite = true;
     private bool paused = false; //False = autostart; True = startare tramite la funzione resume()
+    private bool finished = false;
     private char style;
     private int count = 0;
 
 	// Use this for initialization
 	void Start () {
-        textBox = Canvas.FindObjectOfType<Text>();
+        //textBox = Canvas.FindObjectOfType<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!paused)
+        if (!paused && !finished)
         {
             if (textBox.text.Equals("") && canWrite)
             {
@@ -37,8 +40,18 @@ public class Scena : MonoBehaviour {
                         textBox.text = line.Substring(1);
                         if (style == 'M') textBox.color = mColor;
                         else textBox.color = fColor;
-                        textTime = textBox.text.Length * 3; //Più o meno, il tempo dovrebbe essere di più per frasi corte e meno del normale per frasi lunghe
-                        canWrite = false;
+                        if (style == 'N')
+                        {
+                            finished = true;
+                            textTime = 1;
+                            GameObject next = Instantiate(prossimaScenaPrefab) as GameObject;
+                            next.GetComponent<ProssimaScenaScript>().scena=prossimaScena;
+                        }
+                        else
+                        {
+                            textTime = textBox.text.Length * 3; //Più o meno, il tempo dovrebbe essere di più per frasi corte e meno del normale per frasi lunghe
+                            canWrite = false;
+                        }
                     }
                     else
                     {

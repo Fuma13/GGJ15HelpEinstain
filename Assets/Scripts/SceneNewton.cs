@@ -12,32 +12,38 @@ public class SceneNewton : MonoBehaviour {
 	public GameObject mela;
 
 	private float deltaMovimento, tempoMovimento;
+    private DialogueController dialogo;
 
 	int numeroScena;
 
 	// Use this for initialization
 	void Start () {
 	
-		numeroScena = 0;
+		numeroScena = -1;
 		posizioneIniziale = moglie.transform.position;
 		tempoMovimento = 0;
 		deltaMovimento = 0.01f;
+        dialogo = Camera.main.GetComponent<DialogueController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		switch ( numeroScena ){
-		case 0:
+		case -1:
                 
 			tempoMovimento+= deltaMovimento;
 			moglie.transform.position = Vector3.Lerp( posizioneIniziale, primaPosizioneMoglie.position, tempoMovimento  );
 			if ( tempoMovimento >= 1 ){
 				numeroScena++;
 				tempoMovimento = 0;
-                //mostro parlato
+                Invoke("Delay", 2);
+                //mostro parlato descrizione scena
+                dialogo.resume();
 			}
 			break;
+        case 0:
+            break;
 		case 1:
 			uccello.GetComponent<VoloUccelliNewton>().enabled= true;
 			uccello.GetComponent<SpriteRenderer>().sortingOrder=3;
@@ -59,7 +65,8 @@ public class SceneNewton : MonoBehaviour {
 			mela.rigidbody2D.gravityScale=1;
 			numeroScena++;
 			Invoke("Delay",0.5f);
-                // mostro parlato
+                // mostro parlato oh cazzo
+                dialogo.resume();
 			break;
 		case 6:
 			break;
@@ -81,11 +88,14 @@ public class SceneNewton : MonoBehaviour {
 
             case 9:
             moglie.GetComponent<GiocatoreNewton>().abilitoSparo(false);
-            Invoke("Delay", 1);
-                //mostro il parlato
+                //mostro il parlato eureka e info per next
+                dialogo.resume();
+                numeroScena++;
             break;
 
             case 10:
+            if (Input.GetKeyDown(KeyCode.Return))
+                numeroScena++;
             break;
 
             case 11:
