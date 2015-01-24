@@ -32,7 +32,6 @@ public class GiocatoreNewton : MonoBehaviour {
             Debug.Log(potenza);
             if(Input.GetKeyUp(KeyCode.Space))
             {
-                Debug.Log("KeyUp");
                 Lancia(potenza);
                 potenza = 0;
                 pressed = false;
@@ -43,7 +42,6 @@ public class GiocatoreNewton : MonoBehaviour {
 
     void Lancia(float pot)
     {
-        Debug.Log("Lancio");
         GameObject mela = (GameObject)Instantiate(melaPrefab, transform.position, Quaternion.identity);
         mela.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * potenza);
     }

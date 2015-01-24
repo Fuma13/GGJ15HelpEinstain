@@ -15,6 +15,10 @@ public class PersonaggioNewton : MonoBehaviour {
 	void Update () {
 
         transform.Translate(new Vector2(1, 0) * direzione * velocita * Time.deltaTime);
+
+        float random = Random.value;
+        if (random < 0.01f)
+            InvertiCamminata();
 	
 	}
 
@@ -22,8 +26,13 @@ public class PersonaggioNewton : MonoBehaviour {
     {
         if(coll.gameObject.tag == "Limite")
         {
-            direzione *= -1;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            InvertiCamminata();
         }
+    }
+
+    void InvertiCamminata()
+    {
+        direzione *= -1;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
