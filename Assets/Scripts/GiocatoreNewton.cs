@@ -7,9 +7,12 @@ public class GiocatoreNewton : MonoBehaviour {
     private int direzioneDelta;
     private float potenza, deltaPotenza, maxPotenza;
     private bool pressed;
+	private bool haSparato;
 
 
 	void Start () {
+
+		haSparato = false;
         potenza = 0;
         deltaPotenza = 5f;
         maxPotenza = 200;
@@ -20,9 +23,11 @@ public class GiocatoreNewton : MonoBehaviour {
 
 	void Update () {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        if(Input.GetKeyDown(KeyCode.Space) && haSparato == false)
         {
             pressed = true;
+
         }
         if(pressed)
         {
@@ -35,6 +40,9 @@ public class GiocatoreNewton : MonoBehaviour {
                 Lancia(potenza);
                 potenza = 0;
                 pressed = false;
+				haSparato = true;
+				Invoke("resetSparo" , 1 );
+
             }
         }
         barra.transform.localScale = new Vector3(potenza/10, barra.transform.localScale.y, barra.transform.localScale.z);
@@ -45,4 +53,12 @@ public class GiocatoreNewton : MonoBehaviour {
         GameObject mela = (GameObject)Instantiate(melaPrefab, transform.position, Quaternion.identity);
         mela.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * potenza);
     }
+
+	void resetSparo(){
+
+		haSparato = false;
+
+		}
+
+
 }
