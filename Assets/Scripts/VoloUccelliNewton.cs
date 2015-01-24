@@ -51,7 +51,7 @@ public class VoloUccelliNewton : MonoBehaviour {
 			if ( presaLaMela== false  )
 				InvertiCamminata();
 		}
-		if(coll.gameObject.tag == "Mela")
+		if(coll.gameObject.tag == "Ostacolo")
 		{
 			presaLaMela=true;
 			rigidbody2D.isKinematic = true;
@@ -60,7 +60,7 @@ public class VoloUccelliNewton : MonoBehaviour {
 
 			angolo = new Vector2(1,1*direzione);
 			accelerazione +=1;
-			Invoke ( "init" , 2);
+			Invoke ( "init" , 4);
 		}
 	}
 	
