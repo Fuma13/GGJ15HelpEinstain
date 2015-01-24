@@ -31,9 +31,10 @@ public class GiocatoreGalileo : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Ostacolo")
+        if (coll.gameObject.tag == "Ostacolo" && !script.caduta)
         {
-            script.caduta = true;
+            //script.caduta = true;
+            script.CADI();
             Debug.Log("HIT!!");
         }
     }
