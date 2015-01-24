@@ -6,7 +6,7 @@ public class SpawnerGalileo_B : MonoBehaviour {
     public float ritardo = 1.2f;
     public float inizioLancio = 1f;
     public GameObject roccia;
-    public GameObject piuma;
+    public GameObject barile;
     public float posRoccia = -4f;
 
     private RipetiTorreGalileo script;
@@ -19,7 +19,8 @@ public class SpawnerGalileo_B : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (script.caduta)
+            EliminaOstacoli();
 	}
 
     void Spawn()
@@ -30,13 +31,23 @@ public class SpawnerGalileo_B : MonoBehaviour {
             if (ordine < 0.5f)
             {
                 Instantiate(roccia, new Vector3(posRoccia, 10, 0), Quaternion.identity);
-                Instantiate(piuma, new Vector3(-posRoccia, 10, 0), Quaternion.identity);
+                Instantiate(barile, new Vector3(-posRoccia, 10, 0), Quaternion.identity);
             }
             else
             {
                 Instantiate(roccia, new Vector3(-posRoccia, 10, 0), Quaternion.identity);
-                Instantiate(piuma, new Vector3(posRoccia, 10, 0), Quaternion.identity);
+                Instantiate(barile, new Vector3(posRoccia, 10, 0), Quaternion.identity);
             }
         }
+    }
+
+    void EliminaOstacoli()
+    {
+        GameObject[] ostacoli = GameObject.FindGameObjectsWithTag("Ostacolo");
+        foreach (GameObject ostacolo in ostacoli)
+        {
+            Destroy(ostacolo);
+        }
+
     }
 }
