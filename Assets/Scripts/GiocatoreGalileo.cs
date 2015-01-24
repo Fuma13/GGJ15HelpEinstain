@@ -7,14 +7,14 @@ public class GiocatoreGalileo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        transform.position = new Vector3(xPos, transform.position.y, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	    if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position = new Vector3(-xPos, transform.position.y, 0);
+            transform.position = new Vector3(-transform.localPosition.x, transform.position.y, 0);
         }
 	}
 
