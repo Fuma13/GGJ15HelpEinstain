@@ -6,6 +6,9 @@ public class RipetiTorreGalileo : MonoBehaviour {
     public GameObject torrePrefab;
     private GameObject torre1, torre2;
     private float torreHeight;
+    private int tilesAttraversati = 1;
+    private int tilesScesi = 0;
+    public int tilesDaScendere;
     //COMMANDO PATTERN!
     [HideInInspector]
     public bool caduta = false;
@@ -19,35 +22,45 @@ public class RipetiTorreGalileo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetKeyDown(KeyCode.Keypad1) && !caduta)
+        Debug.Log("Tiles attraversati: "+tilesAttraversati);
+        //Debug
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            caduta = true;
+            if (caduta) caduta = false;
+            else caduta = true;
         }
 
+        //Se sto cadendo
         if (caduta)
         {
             if (torre1.transform.position.y - ((torreHeight * torrePrefab.transform.localScale.y) / 2) > Camera.main.orthographicSize)
             {
-                Debug.Log("Uscito!");
-                torre1.transform.position = new Vector3(0, torre2.transform.position.y + (torreHeight * torrePrefab.transform.localScale.y));
+                tilesAttraversati--;
+                tilesScesi++;
+                torre1.transform.position = new Vector3(0, torre2.transform.position.y - (torreHeight * torrePrefab.transform.localScale.y));
             }
             if (torre2.transform.position.y - ((torreHeight * torrePrefab.transform.localScale.y) / 2) > Camera.main.orthographicSize)
             {
-                Debug.Log("Uscito!");
-                torre2.transform.position = new Vector3(0, torre1.transform.position.y + (torreHeight * torrePrefab.transform.localScale.y));
+                tilesAttraversati--;
+                tilesScesi++;
+                torre2.transform.position = new Vector3(0, torre1.transform.position.y - (torreHeight * torrePrefab.transform.localScale.y));
+            }
+            if (tilesScesi>=tilesDaScendere)
+            {
+                caduta = false;
+                tilesScesi = 0;
             }
         }
         else
         {
             if (torre1.transform.position.y + ((torreHeight * torrePrefab.transform.localScale.y) / 2) < -Camera.main.orthographicSize)
             {
-                Debug.Log("Uscito!");
+                tilesAttraversati++;
                 torre1.transform.position = new Vector3(0, torre2.transform.position.y + (torreHeight * torrePrefab.transform.localScale.y));
             }
             if (torre2.transform.position.y + ((torreHeight * torrePrefab.transform.localScale.y) / 2) < -Camera.main.orthographicSize)
             {
-                Debug.Log("Uscito!");
+                tilesAttraversati++;
                 torre2.transform.position = new Vector3(0, torre1.transform.position.y + (torreHeight * torrePrefab.transform.localScale.y));
             }
         }
