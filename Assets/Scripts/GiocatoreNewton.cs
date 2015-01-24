@@ -45,7 +45,8 @@ public class GiocatoreNewton : MonoBehaviour {
 
             }
         }
-        barra.transform.localScale = new Vector3(potenza/10, barra.transform.localScale.y, barra.transform.localScale.z);
+        //barra.transform.localScale = new Vector3(potenza/10, barra.transform.localScale.y, barra.transform.localScale.z);
+        //barra.transform.localPosition = (new Vector3(1, barra.transform.localPosition.y, 0) * deltaPotenza*2);
 	}
 
     void Lancia(float pot)
