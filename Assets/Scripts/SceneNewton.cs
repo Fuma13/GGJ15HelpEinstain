@@ -88,12 +88,14 @@ public class SceneNewton : MonoBehaviour {
 
             case 9:
             moglie.GetComponent<GiocatoreNewton>().abilitoSparo(false);
-            Invoke("Delay", 1);
-                //mostro il parlato eureka!
+                //mostro il parlato eureka e info per next
                 dialogo.resume();
+                numeroScena++;
             break;
 
             case 10:
+            if (Input.GetKeyDown(KeyCode.Return))
+                numeroScena++;
             break;
 
             case 11:
