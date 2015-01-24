@@ -13,7 +13,7 @@ public class DialogueController : MonoBehaviour
 
     private int textTime;
     private bool canWrite = true;
-    private bool paused = false; //False = autostart; True = startare tramite la funzione resume()
+    public bool paused = true; //False = autostart; True = startare tramite la funzione resume()
     private bool finished = false;
     private char style;
     private int count = 0;

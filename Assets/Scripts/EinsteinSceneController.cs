@@ -52,15 +52,10 @@ public class EinsteinSceneController : MonoBehaviour {
                 }
                 break;
         }
-
-
-        
-	
 	}
 
     public void PlayPressed()
     {
-        //moglie.animation.Play();
         statoScena = StatoScena.MOGLIE_CAMMINA;
     }
 }

@@ -34,7 +34,7 @@ public class GiocatoreNewton : MonoBehaviour {
 								potenza += deltaPotenza * direzioneDelta;
 								if (potenza > maxPotenza || potenza < 0)
 										direzioneDelta *= -1;
-								Debug.Log (potenza);
+
 								if (Input.GetKeyUp (KeyCode.Space)) {
 										Lancia (potenza);
 										potenza = 0;
