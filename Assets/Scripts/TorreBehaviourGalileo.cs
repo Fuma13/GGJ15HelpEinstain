@@ -13,9 +13,12 @@ public class TorreBehaviourGalileo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!script.caduta)
-            this.transform.position = new Vector3(0, this.transform.localPosition.y - speed * Time.deltaTime, 0);
-        else
-            this.transform.position = new Vector3(0, this.transform.localPosition.y + speed * Time.deltaTime, 0);
-	}
+        if (!script.inFondo)
+        {
+            if (!script.caduta)
+                this.transform.position = new Vector3(0, this.transform.localPosition.y - speed * Time.deltaTime, 0);
+            else
+                this.transform.position = new Vector3(0, this.transform.localPosition.y + (2 * speed) * Time.deltaTime, 0);
+        }
+    }
 }
