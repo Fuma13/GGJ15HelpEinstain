@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour
 {
     public string[] dialoghi;
-    public Color cMilena = Color.magenta;
-    public Color cEinstein = Color.white;
-    public Color cGalileo = Color.gray;
-    public Color cNewton = Color.green;
+    private Color cMilena = Color.magenta;
+    private Color cEinstein = Color.white;
+    private  Color cGalileo = Color.gray;
+    private Color cNewton = Color.green;
     public Color cPressStart = Color.white;
     public Text textBox;
     public GameObject prossimaScenaPrefab;
