@@ -46,6 +46,7 @@ public class DialogueController : MonoBehaviour
                         else if (style == 'G') textBox.color = cGalileo;
                         else if (style == 'N') textBox.color = cNewton;
                         else textBox.color = cMilena;
+
                         if (style == 'Z')
                         {
                             finished = true;
@@ -56,6 +57,9 @@ public class DialogueController : MonoBehaviour
                         else
                         {
                             textTime = textBox.text.Length * 3; //Più o meno, il tempo dovrebbe essere di più per frasi corte e meno del normale per frasi lunghe
+                            //Debug.Log(textTime);
+                            if (textTime < 50)
+                                textTime = 80;
                             canWrite = false;
                         }
                     }
