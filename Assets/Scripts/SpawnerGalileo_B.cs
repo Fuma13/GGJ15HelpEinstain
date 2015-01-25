@@ -12,6 +12,7 @@ public class SpawnerGalileo_B : MonoBehaviour {
 
     private RipetiTorreGalileo script;
     private Animator animator;
+    private bool STOP = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,22 +29,25 @@ public class SpawnerGalileo_B : MonoBehaviour {
 
     void Spawn()
     {
-        if (!script || !script.caduta)
+        if (!STOP)
         {
-            float ordine = Random.value;
-            if (ordine < 0.5f)
+            if (!script || !script.caduta)
             {
-                Instantiate(roccia, new Vector3(posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
-                Instantiate(barile, new Vector3(-posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
-                if (animator)
-                    animator.SetTrigger("Restart");
-            }
-            else
-            {
-                Instantiate(roccia, new Vector3(-posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
-                Instantiate(barile, new Vector3(posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
-                if (animator)
-                    animator.SetTrigger("Restart");
+                float ordine = Random.value;
+                if (ordine < 0.5f)
+                {
+                    Instantiate(roccia, new Vector3(posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
+                    Instantiate(barile, new Vector3(-posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
+                    if (animator)
+                        animator.SetTrigger("Restart");
+                }
+                else
+                {
+                    Instantiate(roccia, new Vector3(-posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
+                    Instantiate(barile, new Vector3(posRoccia + transform.position.x, posYRoccia + transform.position.y, 0), Quaternion.identity);
+                    if (animator)
+                        animator.SetTrigger("Restart");
+                }
             }
         }
     }
@@ -56,6 +60,11 @@ public class SpawnerGalileo_B : MonoBehaviour {
         //    Destroy(ostacolo);
         //}
 
+    }
+
+    public void PLEASE_STOP()
+    {
+        STOP = true;
     }
 
 }

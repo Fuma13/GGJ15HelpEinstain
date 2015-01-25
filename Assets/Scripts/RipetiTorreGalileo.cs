@@ -16,8 +16,15 @@ public class RipetiTorreGalileo : MonoBehaviour {
     //COMMANDO PATTERN!
     [HideInInspector]
     public bool finoInFondo = false;
-    private GameObject torreFondo=null;
+    private GameObject torreFondo = null;
     private bool inCima = false;
+    private SpawnerGalileo_B spawner;
+    private GameObject cima = null;
+    //COMMANDO PATTERN!
+    [HideInInspector]
+    public bool stop = false;
+    public GameObject giocatore;
+    private bool primoFadeOut = false;
 
 	// Use this for initialization
 	void Start () {
@@ -26,11 +33,12 @@ public class RipetiTorreGalileo : MonoBehaviour {
         torre1.GetComponent<TorreBehaviourGalileo>().posizione = 0;
         torre2 = (GameObject)Instantiate(torrePrefab, new Vector3(0, torre1.transform.position.y + (torreHeight * torrePrefab.transform.localScale.y), 0), Quaternion.identity);
         torre2.GetComponent<TorreBehaviourGalileo>().posizione = 1;
+
+        spawner = Camera.main.GetComponent<SpawnerGalileo_B>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
         //Debug.Log("Tiles attraversati: "+tilesAttraversati);
         /*if (Input.GetKeyDown(KeyCode.Keypad1))
         {
@@ -60,12 +68,44 @@ public class RipetiTorreGalileo : MonoBehaviour {
             }
         }
 
-        if (inCima && tilesAttraversati < tilesPerLaCima)
+        if (tilesAttraversati >= tilesPerLaCima - 1 && !inCima)
+        {
+            inCima = true;
+            spawner.PLEASE_STOP();
+            if (torre1.transform.position.y > torre2.transform.position.y) cima = torre1;
+            else cima = torre2;
+        }
+        /*else
         {
             inCima = false;
+            cima = null;
+        }*/
+
+        if ((giocatore.renderer as SpriteRenderer).color.a == 0)
+        {
+            stop = false;
         }
 
-        if (!finoInFondo)
+        if (primoFadeOut && cima.transform.position.y<-7 && !stop)
+        {
+            stop = true;
+            giocatore.transform.localPosition = new Vector3(-1.9f, 1.28f, 0);
+            giocatore.GetComponent<GiocatoreGalileo>().startFadeIn();
+        }
+
+        //PHONG PATTERN
+        if (inCima && cima!=null && !stop && !primoFadeOut)
+        {
+            if (cima.transform.localPosition.y<-2.21)
+            {
+                primoFadeOut = true;
+                cima.transform.position=new Vector3(cima.transform.localPosition.x, -2.18f, cima.transform.localPosition.z);
+                stop = true;
+                giocatore.GetComponent<GiocatoreGalileo>().startFadeOut();
+            }
+        }
+
+        if (!finoInFondo && !inCima)
         {
             if (!caduta)
             {
@@ -106,7 +146,6 @@ public class RipetiTorreGalileo : MonoBehaviour {
             {
                 if (torreFondo.transform.localPosition.y + 2 > Camera.main.orthographicSize)
                 {
-                    Debug.Log("in fondo");
                     finoInFondo = false;
                     torreFondo = null;
                     caduta = false;
@@ -137,7 +176,7 @@ public class RipetiTorreGalileo : MonoBehaviour {
             if (torre1.transform.position.y < torre2.transform.position.y) torreFondo = torre1;
             else torreFondo = torre2;
             finoInFondo = true;
-        }
+        }/*
         else if (torre1.GetComponent<TorreBehaviourGalileo>().posizione == 2 && torre2.GetComponent<TorreBehaviourGalileo>().posizione == 1
             || torre1.GetComponent<TorreBehaviourGalileo>().posizione == 1 && torre2.GetComponent<TorreBehaviourGalileo>().posizione == 2)
         {
@@ -164,7 +203,7 @@ public class RipetiTorreGalileo : MonoBehaviour {
                 }
             }
             finoInFondo = true;
-        }
+        }*/
         else
         {
             Invoke("stopCaduta", 2);

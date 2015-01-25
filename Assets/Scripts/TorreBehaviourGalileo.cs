@@ -21,12 +21,12 @@ public class TorreBehaviourGalileo : MonoBehaviour {
             GetComponent<SpriteRenderer>().sprite = fine;
         else GetComponent<SpriteRenderer>().sprite = standard;
 
-        /*if (!script.finoInFondo)
-        {*/
+        if (!script.stop)
+        {
             if (!script.caduta)
                 this.transform.position = new Vector3(0, this.transform.localPosition.y - speed * Time.deltaTime, 0);
             else
                 this.transform.position = new Vector3(0, this.transform.localPosition.y + (2 * speed) * Time.deltaTime, 0);
-        //}
+        }
     }
 }
