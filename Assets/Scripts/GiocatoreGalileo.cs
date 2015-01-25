@@ -60,6 +60,7 @@ public class GiocatoreGalileo : MonoBehaviour {
             //script.caduta = true;
             script.CADI();
             Debug.Log("HIT!!");
+            audio.Play();
         }
     }
 
