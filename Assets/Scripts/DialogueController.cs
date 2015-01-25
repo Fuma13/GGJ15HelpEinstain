@@ -12,6 +12,7 @@ public class DialogueController : MonoBehaviour
     public Text textBox;
     public GameObject prossimaScenaPrefab;
     public string prossimaScena;
+    public int minTime = 100;
 
     private int textTime;
     private bool canWrite = true;
@@ -59,7 +60,7 @@ public class DialogueController : MonoBehaviour
                             textTime = textBox.text.Length * 3; //Più o meno, il tempo dovrebbe essere di più per frasi corte e meno del normale per frasi lunghe
                             //Debug.Log(textTime);
                             if (textTime < 50)
-                                textTime = 80;
+                                textTime = minTime;
                             canWrite = false;
                         }
                     }
