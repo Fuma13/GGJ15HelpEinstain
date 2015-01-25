@@ -5,6 +5,7 @@ public class TestaNewton : MonoBehaviour {
 
     private PersonaggioNewton padre;
 
+
     void Start()
     {
         padre = GetComponentInParent<PersonaggioNewton>();
@@ -15,6 +16,7 @@ public class TestaNewton : MonoBehaviour {
         if (coll.gameObject.tag == "Ostacolo")
         {
             padre.Colpito();
+            audio.Play();
         }
     }
 }

@@ -36,6 +36,7 @@ public class GiocatoreNewton : MonoBehaviour {
 										direzioneDelta *= -1;
 
 								if (Input.GetKeyUp (KeyCode.Space)) {
+                                    audio.Play();
 										Lancia (potenza);
 										potenza = 0;
 										pressed = false;
