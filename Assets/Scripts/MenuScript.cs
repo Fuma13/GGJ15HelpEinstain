@@ -3,6 +3,9 @@ using System.Collections;
 
 public class MenuScript : MonoBehaviour {
 
+    public string scenaPlay;
+    public string scenaCredit;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,10 +17,10 @@ public class MenuScript : MonoBehaviour {
 	}
 
     public void scenaGalileo(){
-        Application.LoadLevel (1);
+        Application.LoadLevel(scenaPlay);
     }
 
     public void scenaCredits(){
-        Application.LoadLevel (9); 
+        Application.LoadLevel(scenaCredit); 
     }
 }
