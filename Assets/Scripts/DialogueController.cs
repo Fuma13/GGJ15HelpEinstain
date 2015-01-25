@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour
 {
     public string[] dialoghi;
-    public Color mColor = Color.black;
-    public Color fColor = Color.white;
+    public Color cMilena = Color.black;
+    public Color cEinstein = Color.white;
+    public Color cGalileo = Color.gray;
+    public Color cNewton = Color.green;
     public Text textBox;
     public GameObject prossimaScenaPrefab;
     public string prossimaScena;
@@ -38,9 +40,13 @@ public class DialogueController : MonoBehaviour
                     if (style != 'P')
                     {
                         textBox.text = line.Substring(1);
-                        if (style == 'M') textBox.color = mColor;
-                        else textBox.color = fColor;
-                        if (style == 'N')
+                        /*if (style == 'M') textBox.color = mColor;
+                        else textBox.color = fColor;*/
+                        if (style == 'E') textBox.color = cEinstein;
+                        else if (style == 'G') textBox.color = cGalileo;
+                        else if (style == 'N') textBox.color = cNewton;
+                        else textBox.color = cMilena;
+                        if (style == 'Z')
                         {
                             finished = true;
                             textTime = 1;
