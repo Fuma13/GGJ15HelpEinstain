@@ -40,6 +40,7 @@ public class RipetiTorreGalileo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(finoInFondo);
         //Debug.Log("Tiles attraversati: "+tilesAttraversati);
         /*if (Input.GetKeyDown(KeyCode.Keypad1))
         {
@@ -204,7 +205,9 @@ public class RipetiTorreGalileo : MonoBehaviour {
         }
         else
         {
-            Invoke("stopCaduta", 2);
+            if (torre1.GetComponent<TorreBehaviourGalileo>().posizione < 2 || torre2.GetComponent<TorreBehaviourGalileo>().posizione<2)
+                Invoke("stopCaduta", 1);
+            else Invoke("stopCaduta", 2);
         }
     }
 
