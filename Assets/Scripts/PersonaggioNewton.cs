@@ -37,11 +37,10 @@ public class PersonaggioNewton : MonoBehaviour {
             InvertiCamminata();
         }
 
-		if(coll.gameObject.tag == "Ostacolo")
-		{
-			velocita = 0;
-			GetComponent<Animator>().enabled = false;
-		}
+        //if(coll.gameObject.tag == "Ostacolo")
+        //{
+        //    Colpito();
+        //}
 	}
 	
 	void InvertiCamminata()
@@ -57,6 +56,12 @@ public class PersonaggioNewton : MonoBehaviour {
      public void enableRandom()
      {
          randomDirezione = true;
+     }
+
+    public void Colpito()
+     {
+         velocita = 0;
+         GetComponent<Animator>().enabled = false;
      }
 
 }
