@@ -78,6 +78,8 @@ public class EinsteinFinalScene : MonoBehaviour {
                     einstein.GetComponent<SpriteRenderer>().sortingOrder = 3;
                     idonaText.SetActive(true);
                     dc.resume();
+                    einstein.transform.localScale *= 1.5f;
+                    statoCorrente = Stati.FINE;
                 }
                 break;
             case Stati.FINE:

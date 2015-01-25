@@ -13,6 +13,7 @@ public class DialogueController : MonoBehaviour
     public Text textBox;
     public GameObject prossimaScenaPrefab;
     public string prossimaScena;
+    public int minTime = 100;
 
     private int textTime;
     private bool canWrite = true;
@@ -47,6 +48,7 @@ public class DialogueController : MonoBehaviour
                         else if (style == 'G') textBox.color = cGalileo;
                         else if (style == 'N') textBox.color = cNewton;
                         else textBox.color = cMilena;
+
                         if (style == 'Z')
                         {
                             textBox.color = cPressStart;
@@ -58,6 +60,9 @@ public class DialogueController : MonoBehaviour
                         else
                         {
                             textTime = textBox.text.Length * 3; //Più o meno, il tempo dovrebbe essere di più per frasi corte e meno del normale per frasi lunghe
+                            //Debug.Log(textTime);
+                            if (textTime < 50)
+                                textTime = minTime;
                             canWrite = false;
                         }
                     }

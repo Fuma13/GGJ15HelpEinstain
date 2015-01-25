@@ -27,8 +27,9 @@ public class VoloUccelliNewton : MonoBehaviour {
 		scaleInit = transform.localScale;
 		rotazioneInit = transform.rotation;
 
+        anim.SetTrigger("Parti");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
