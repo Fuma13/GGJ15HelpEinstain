@@ -6,6 +6,8 @@ public class PersonaggioNewton : MonoBehaviour {
     private int direzione;
     public float velocita = 2;
     private bool randomDirezione;
+    public Sprite colpito, bernoccolo;
+    public CircleCollider2D uccello;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +64,14 @@ public class PersonaggioNewton : MonoBehaviour {
      {
          velocita = 0;
          GetComponent<Animator>().enabled = false;
+         GetComponent<SpriteRenderer>().sprite = colpito;
+         Invoke("Bernoccolo", 1);
+         uccello.isTrigger = true;
      }
+    private void Bernoccolo()
+    {
+        GetComponent<SpriteRenderer>().sprite = bernoccolo;
+
+    }
 
 }

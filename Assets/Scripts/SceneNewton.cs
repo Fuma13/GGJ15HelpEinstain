@@ -38,12 +38,14 @@ public class SceneNewton : MonoBehaviour {
 			if ( tempoMovimento >= 1 ){
 				numeroScena++;
 				tempoMovimento = 0;
-                Invoke("Delay", 2);
+                //Invoke("Delay", 2);
                 //mostro parlato descrizione scena
                 dialogo.resume();
 			}
 			break;
         case 0:
+            if (dialogo.paused)
+                numeroScena++;
             break;
 		case 1:
 			uccello.GetComponent<VoloUccelliNewton>().enabled= true;
@@ -51,7 +53,9 @@ public class SceneNewton : MonoBehaviour {
 			numeroScena++;
 			Invoke("Delay",2);
 			break;
-		case 2:
+        case 2:
+            //if (dialogo.paused)
+            //    numeroScena++;
 			break;
 		case 3:
 			newton.GetComponent<PersonaggioNewton>().enabled= true;
@@ -65,11 +69,13 @@ public class SceneNewton : MonoBehaviour {
 			
 			mela.rigidbody2D.gravityScale=1;
 			numeroScena++;
-			Invoke("Delay",0.5f);
+            //Invoke("Delay",0.5f);
                 // mostro parlato oh cazzo
                 dialogo.resume();
 			break;
-		case 6:
+        case 6:
+            if (dialogo.paused)
+                numeroScena++;
 			break;
 		case 7:
 			tempoMovimento+= deltaMovimento;
