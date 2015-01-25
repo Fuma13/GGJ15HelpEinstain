@@ -5,10 +5,14 @@ public class PersonaggioNewton : MonoBehaviour {
 
     private int direzione;
     public float velocita = 2;
+    private bool randomDirezione;
 
 	// Use this for initialization
 	void Start () {
         direzione = 1;
+        randomDirezione = false;
+
+        Invoke("enableRandom", 2);
 	}
 	
 	// Update is called once per frame
@@ -16,9 +20,12 @@ public class PersonaggioNewton : MonoBehaviour {
 		if (velocita > 0) {
 						transform.Translate (new Vector2 (1, 0) * direzione * velocita * Time.deltaTime);
 
-						float random = Random.value;
-						if (random < 0.01f)
-						InvertiCamminata ();
+                        if (randomDirezione == true)
+                        {
+                            float random = Random.value;
+                            if (random < 0.01f)
+                                InvertiCamminata();
+                        }
 		}
 	
 	}
@@ -46,5 +53,10 @@ public class PersonaggioNewton : MonoBehaviour {
     {
         return (velocita > 0) ? false : true;
     }
+
+     public void enableRandom()
+     {
+         randomDirezione = true;
+     }
 
 }

@@ -10,6 +10,7 @@ public class SceneNewton : MonoBehaviour {
 	public Transform primaPosizioneMoglie;
 	public Transform secondaPosizioneMoglie;
 	public GameObject mela;
+    public Sprite moglieSullAlbero;
 
 	private float deltaMovimento, tempoMovimento;
     private DialogueController dialogo;
@@ -75,6 +76,7 @@ public class SceneNewton : MonoBehaviour {
 			moglie.transform.position = Vector3.Lerp( primaPosizioneMoglie.position, secondaPosizioneMoglie.position, tempoMovimento  );
 			if ( tempoMovimento >= 1 ){
 				numeroScena++;
+                moglie.GetComponent<SpriteRenderer>().sprite = moglieSullAlbero;
 				moglie.GetComponent<SpriteRenderer>().sortingOrder=3;
 				moglie.GetComponent<GiocatoreNewton>().abilitoSparo(true);
 			}
