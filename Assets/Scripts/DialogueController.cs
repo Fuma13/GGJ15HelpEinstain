@@ -9,6 +9,7 @@ public class DialogueController : MonoBehaviour
     public Color cEinstein = Color.white;
     public Color cGalileo = Color.gray;
     public Color cNewton = Color.green;
+    public Color cPressStart = Color.white;
     public Text textBox;
     public GameObject prossimaScenaPrefab;
     public string prossimaScena;
@@ -48,6 +49,7 @@ public class DialogueController : MonoBehaviour
                         else textBox.color = cMilena;
                         if (style == 'Z')
                         {
+                            textBox.color = cPressStart;
                             finished = true;
                             textTime = 1;
                             GameObject next = Instantiate(prossimaScenaPrefab) as GameObject;
