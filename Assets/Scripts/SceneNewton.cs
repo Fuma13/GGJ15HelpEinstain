@@ -9,7 +9,7 @@ public class SceneNewton : MonoBehaviour {
 	public GameObject uccello;
 	public Transform primaPosizioneMoglie;
 	public Transform secondaPosizioneMoglie;
-	public GameObject mela;
+	public GameObject mela,barra,bordobarra;
     public Sprite moglieSullAlbero;
 
 	private float deltaMovimento, tempoMovimento;
@@ -104,6 +104,9 @@ public class SceneNewton : MonoBehaviour {
             {
                 numeroScena++;
                 moglie.GetComponent<GiocatoreNewton>().abilitoSparo(true);
+                bordobarra.SetActive(true);
+                barra.SetActive(true);
+
             }
             break;
             case 9 :

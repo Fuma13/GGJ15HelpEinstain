@@ -25,30 +25,41 @@ public class GiocatoreNewton : MonoBehaviour {
 
 	void Update () {
 
-		if (abilitosparo == true) {
-						if (Input.GetKeyDown (KeyCode.Space) && haSparato == false) {
-								pressed = true;
+        if (abilitosparo == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && haSparato == false)
+            {
+                pressed = true;
 
-						}
-						if (pressed) {
-								potenza += deltaPotenza * direzioneDelta;
-								if (potenza > maxPotenza || potenza < 0)
-										direzioneDelta *= -1;
+            }
+            if (pressed)
+            {
+                potenza += deltaPotenza * direzioneDelta;
 
-								if (Input.GetKeyUp (KeyCode.Space)) {
-                                    audio.Play();
-										Lancia (potenza);
-										potenza = 0;
-										pressed = false;
-										haSparato = true;
-										Invoke ("resetSparo", 0.5f);
+                if (potenza > maxPotenza || potenza < 0)
+                    direzioneDelta *= -1;
 
-								}
-						}
+                if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    audio.Play();
+                    Lancia(potenza);
+                    potenza = 0;
+                    pressed = false;
+                    haSparato = true;
+                    Invoke("resetSparo", 0.5f);
 
-						//barra.transform.localScale = new Vector3(potenza/10, barra.transform.localScale.y, barra.transform.localScale.z);
-						//barra.transform.localPosition = (new Vector3(1, barra.transform.localPosition.y, 0) * deltaPotenza*2);
-				}
+                }
+
+                if (potenza > 0)
+                {
+                    barra.transform.localScale = new Vector3(potenza / 265, barra.transform.localScale.y, barra.transform.localScale.z);
+                } else
+                {
+                    barra.transform.localScale = new Vector3(0.001f, barra.transform.localScale.y, barra.transform.localScale.z);
+                }
+                //barra.transform.localPosition = (new Vector3(1, barra.transform.localPosition.y, 0) * deltaPotenza * 2);
+            }
+        }
 	}
 
     void Lancia(float pot)
