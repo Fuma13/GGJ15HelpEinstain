@@ -73,34 +73,52 @@ public class SceneNewton : MonoBehaviour {
 			break;
 		case 7:
 			tempoMovimento+= deltaMovimento;
-			moglie.transform.position = Vector3.Lerp( primaPosizioneMoglie.position, secondaPosizioneMoglie.position, tempoMovimento  );
+            moglie.GetComponent<SpriteRenderer>().color = new Color(moglie.GetComponent<SpriteRenderer>().color.r,
+                                                                    moglie.GetComponent<SpriteRenderer>().color.g,
+                                                                    moglie.GetComponent<SpriteRenderer>().color.b,
+                                                                    Mathf.Lerp(1, 0, tempoMovimento));
+			//moglie.transform.position = Vector3.Lerp( primaPosizioneMoglie.position, secondaPosizioneMoglie.position, tempoMovimento  );
 			if ( tempoMovimento >= 1 ){
 				numeroScena++;
                 moglie.GetComponent<SpriteRenderer>().sprite = moglieSullAlbero;
-				moglie.GetComponent<SpriteRenderer>().sortingOrder=3;
-				moglie.GetComponent<GiocatoreNewton>().abilitoSparo(true);
+                moglie.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                moglie.transform.position = secondaPosizioneMoglie.position;
+                tempoMovimento = 0;
 			}
 			break;
-            case 8 :
+            case 8:
+
+            tempoMovimento += deltaMovimento;
+            moglie.GetComponent<SpriteRenderer>().color = new Color(moglie.GetComponent<SpriteRenderer>().color.r,
+                                                                moglie.GetComponent<SpriteRenderer>().color.g,
+                                                                moglie.GetComponent<SpriteRenderer>().color.b,
+                                                                Mathf.Lerp(0, 1, tempoMovimento));
+            if (tempoMovimento >= 1)
+            {
+                numeroScena++;
+                moglie.GetComponent<GiocatoreNewton>().abilitoSparo(true);
+            }
+            break;
+            case 9 :
             if (newton.GetComponent<PersonaggioNewton>().vincita() == true)
             {
                 numeroScena++;
             }
             break;
 
-            case 9:
+            case 10:
             moglie.GetComponent<GiocatoreNewton>().abilitoSparo(false);
                 //mostro il parlato eureka e info per next
                 dialogo.resume();
                 numeroScena++;
             break;
 
-            case 10:
+            case 11:
             if (Input.GetKeyDown(KeyCode.Return))
                 numeroScena++;
             break;
 
-            case 11:
+            case 12:
             moglie.GetComponent<Vortice>().enabled = true;
             //inserisco la funzione per cambiare scena
             break;
