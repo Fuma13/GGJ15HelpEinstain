@@ -13,17 +13,20 @@ public class GiocatoreGalileo : MonoBehaviour {
     public float duration = 1f;
     private float startTime;
     public SpriteRenderer sprite;
+    public Sprite milevaInCima;
 
 	// Use this for initialization
 	void Start () {
         transform.position = new Vector3(xPos, transform.position.y, 0);
         script = Camera.main.GetComponent<RipetiTorreGalileo>();
         sprite = GetComponent<SpriteRenderer>();
-        GetComponent<Animator>().Play("idleMoglie");
+        GetComponent<Animator>().Play("arrampicataMoglie");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (!script.inCima) GetComponent<Animator>().Play("arrampicataMoglie");
+
         if (!script.caduta)
         {
             transform.rotation = Quaternion.identity;
@@ -65,6 +68,8 @@ public class GiocatoreGalileo : MonoBehaviour {
         startTime = Time.time;
         fadein = true;
         GetComponent<Animator>().Play("fadeInMoglie");
+        sprite.sprite = milevaInCima;
+        this.transform.localScale = new Vector3(-0.3f, 0.3f, 1f);
         Debug.Log("mi fadeinizzone");
     }
     public void startFadeOut()
