@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 3700289ae34b8de499bc6fc8574cb4b4
+guid: 52696a2b72eff4841b5630bb6e403cb2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: einstein1 512_0
-    21300002: einstein1 512_1
+    21300000: newton 512_0
+    21300002: newton 512_1
+    21300004: newton 512_2
+    21300006: newton 512_3
+    21300008: newton 512_4
+    21300010: newton 512_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -45,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: einstein1 512_0
+    - name: newton 512_0
       rect:
         serializedVersion: 2
         x: 0
@@ -55,10 +59,50 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: einstein1 512_1
+    - name: newton 512_1
       rect:
         serializedVersion: 2
         x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: newton 512_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: newton 512_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: newton 512_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: newton 512_5
+      rect:
+        serializedVersion: 2
+        x: 2560
         y: 0
         width: 512
         height: 512

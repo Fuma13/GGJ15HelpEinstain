@@ -83,6 +83,7 @@ public class SceneNewton : MonoBehaviour {
                 moglie.GetComponent<SpriteRenderer>().sprite = moglieSullAlbero;
                 moglie.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 moglie.transform.position = secondaPosizioneMoglie.position;
+                moglie.transform.localScale *= 0.7f;
                 tempoMovimento = 0;
 			}
 			break;
