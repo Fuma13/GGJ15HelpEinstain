@@ -65,6 +65,11 @@ public class SpawnerGalileo_B : MonoBehaviour {
     public void PLEASE_STOP()
     {
         STOP = true;
+        GameObject[] ostacoli = GameObject.FindGameObjectsWithTag("Ostacolo");
+        foreach (GameObject ostacolo in ostacoli)
+        {
+            Destroy(ostacolo);
+        }
     }
 
 }

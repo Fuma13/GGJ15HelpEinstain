@@ -76,6 +76,7 @@ public class RipetiTorreGalileo : MonoBehaviour {
             spawner.PLEASE_STOP();
             if (torre1.transform.position.y > torre2.transform.position.y) cima = torre1;
             else cima = torre2;
+            cima.transform.position = new Vector3(cima.transform.position.x, cima.transform.position.y + 2, 1);
         }
         /*else
         {
@@ -92,7 +93,7 @@ public class RipetiTorreGalileo : MonoBehaviour {
         {
             stop = true;
             //giocatore.transform.localPosition = new Vector3(-1.9f, 1.28f, 0);
-            giocatore.transform.localPosition = new Vector3(-1.9f, 2.45f, 0);
+            giocatore.transform.localPosition = new Vector3(-1.9f, 0.7f, 0);
             giocatore.GetComponent<GiocatoreGalileo>().startFadeIn();
         }
 

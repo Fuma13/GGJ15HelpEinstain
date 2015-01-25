@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour
 {
     public string[] dialoghi;
-    public Color cMilena = Color.black;
+    public Color cMilena = Color.magenta;
     public Color cEinstein = Color.white;
     public Color cGalileo = Color.gray;
     public Color cNewton = Color.green;
