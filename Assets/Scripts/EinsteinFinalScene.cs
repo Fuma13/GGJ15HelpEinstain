@@ -3,14 +3,14 @@ using System.Collections;
 
 public class EinsteinFinalScene : MonoBehaviour {
 
-    public enum Stati { RICOMPARSA, PARLA_LEI, PARLA_LUI, PARLA_LEI2, IDEONA, NERO, NERO2, FINE };
+    public enum Stati { RICOMPARSA, PARLA_LEI, PARLA_LUI, PARLA_LEI2, IDEONA,LAMPADINA, NERO, NERO2, FINE };
     public Stati statoCorrente;
     public Transform dest;
     private Vector3 inizio;
     private float deltaMovimento, tempoMovimento;
     public GameObject moglie, einstein;
     private DialogueController dc;
-    public Sprite einsteinIdea, einsteinLampadina;
+    public Sprite einsteinParla, einsteinIdea,einsteinLampadina;
     public FadeController sfondoNero;
     public GameObject idonaText;
 
@@ -42,7 +42,7 @@ public class EinsteinFinalScene : MonoBehaviour {
                     statoCorrente = Stati.PARLA_LUI;
                 break;
             case Stati.PARLA_LUI:
-                einstein.GetComponent<SpriteRenderer>().sprite = einsteinIdea;
+                einstein.GetComponent<SpriteRenderer>().sprite = einsteinParla;
                 dc.resume();
                 statoCorrente = Stati.PARLA_LEI2;
                 break;
@@ -50,11 +50,19 @@ public class EinsteinFinalScene : MonoBehaviour {
                 if (dc.paused)
                 {
                     statoCorrente = Stati.IDEONA;
-                    einstein.GetComponent<SpriteRenderer>().sprite = einsteinLampadina;
+                    einstein.GetComponent<SpriteRenderer>().sprite = einsteinIdea;
                     dc.resume();
                 }
                 break;
             case Stati.IDEONA:
+                if(dc.paused)
+                {
+                    statoCorrente = Stati.LAMPADINA;
+                    einstein.GetComponent<SpriteRenderer>().sprite = einsteinLampadina;
+                    dc.resume();
+                }
+                break;
+            case Stati.LAMPADINA:
                 if(dc.paused)
                 {
                     statoCorrente = Stati.NERO;
